@@ -47,12 +47,13 @@ class Category(models.Model):
         """
         Save the current instance to the database.
         """
+
         if not self.slug:
-            self.slug = slugify(rand_slug() + "-pickBetter" + self.name)
-        super(Category, self).save(*args, *kwargs)
+            self.slug = slugify(rand_slug() + '-pickBetter' + self.name)
+        super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("shop:category_list", args=[str(self.slug)])
+        return reverse("shop:category-list", args=[str(self.slug)])
 
 
 class Product(models.Model):
@@ -73,7 +74,7 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("shop:product_detail", args=[str(self.slug)])
+        return reverse("shop:product-detail", args=[str(self.slug)])
 
 
 class ProductManager(models.Manager):
