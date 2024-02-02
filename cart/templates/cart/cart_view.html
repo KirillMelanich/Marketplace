@@ -1,4 +1,4 @@
-{% include "base.html" %} {% load static %} {% block content %}
+{% include "base.html" %} {% load static %} {% load mathfilters %} {% block content %}
 
 <main class="pt-5">
   <div class="container">
@@ -39,7 +39,7 @@
               <div class="col-6">Product</div>
 
               <div class="col-6 text-end">
-                <span class="h6 fw-bold">{{ product.price }}</span>
+                <span class="h6 fw-bold">{{ product.price|mul:item.qty }}</span>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
 
                 &nbsp;
 
-                <select id="">
+                <select id="select{{ product.id }}">
                   <option selected>{{ item.qty }}</option>
 
                   <option value="">1</option>
@@ -68,7 +68,7 @@
 
                 <button
                   type="button"
-                  data-index=""
+                  data-index="{{ product.id }}"
                   class="btn btn-primary btn-sm update-button"
                 >
                   Update
@@ -98,7 +98,7 @@
       <div class="h6 fw-bold">
         Total: $
         <div id="total" class="d-inline-flex">
-
+          {{ cart.get_total_price }}
         </div>
       </div>
     </div>
@@ -109,6 +109,57 @@
 </main>
 
 <script>
+      $(document).on('click', '.delete-button', function(e){
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "cart:delete-from-cart" %}',
+            data: {
+                product_id: $(this).data('index'),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(response){
+                document.getElementById('lblCartCount').textContent = response.qty
+                document.getElementById('total').textContent = response.total
+
+                location.reload()
+            },
+            error: function(error, status){
+                console.log(error)
+            }
+        })
+    });
+
+    $(document).on('click', '.update-button', function(e){
+        e.preventDefault();
+
+        var product_id = $(this).data('index')
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "cart:update-cart" %}',
+            data: {
+                product_id: $(this).data('index'),
+                product_qty: $('#select'+product_id+ ' option:selected').text(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(response){
+                document.getElementById('lblCartCount').textContent = response.qty
+                document.getElementById('total').textContent = response.total
+
+                location.reload()
+            },
+            error: function(error, status){
+                console.log(error)
+            }
+        })
+    });
+
+
+
 
 
 </script>
