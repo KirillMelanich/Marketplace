@@ -7,7 +7,9 @@ from django.urls import reverse
 
 
 def rand_slug():
-    return "".join(random.choice(string.ascii_lowercase + string.digits) for _ in range(3))
+    return "".join(
+        random.choice(string.ascii_lowercase + string.digits) for _ in range(3)
+    )
 
 
 class Category(models.Model):
@@ -21,15 +23,18 @@ class Category(models.Model):
         created_at (datetime): The date and time of creation.
 
     """
+
     name = models.CharField(max_length=250, db_index=True)
     parent = models.ForeignKey(
         "self", on_delete=models.CASCADE, related_name="children", blank=True, null=True
     )
-    slug = models.SlugField("URL", max_length=250, unique=True, null=False, editable=True)
+    slug = models.SlugField(
+        "URL", max_length=250, unique=True, null=False, editable=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = (["slug", "parent"])
+        unique_together = ["slug", "parent"]
         verbose_name_plural = "categories"
 
     def __str__(self):
@@ -49,7 +54,7 @@ class Category(models.Model):
         """
 
         if not self.slug:
-            self.slug = slugify(rand_slug() + '-pickBetter' + self.name)
+            self.slug = slugify(rand_slug() + "-pickBetter" + self.name)
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -58,10 +63,18 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name="products", blank=True, null=True
+        Category,
+        on_delete=models.CASCADE,
+        related_name="products",
+        blank=True,
+        null=True,
     )
-    title = models.CharField(max_length=250,)
-    brand = models.CharField(max_length=250,)
+    title = models.CharField(
+        max_length=250,
+    )
+    brand = models.CharField(
+        max_length=250,
+    )
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=250, unique=True, null=False, editable=True)
     price = models.DecimalField("price", max_digits=12, decimal_places=2, default=99.99)

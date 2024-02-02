@@ -5,7 +5,7 @@ from .models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "parent","slug")
+    list_display = ("name", "parent", "slug")
     ordering = ("name",)
 
     def get_prepopulated_fields(self, request, obj=None):
@@ -20,4 +20,3 @@ class ProductAdmin(admin.ModelAdmin):
 
     def get_prepopulated_fields(self, request, obj=None):
         return {"slug": ("title",)}
-
