@@ -48,7 +48,7 @@ class Cart:
     def update(self, product, quantity):
         product_id = str(product)
         if product_id in self.cart:
-            self.cart[product_id]['qty'] = quantity
+            self.cart[product_id]["qty"] = quantity
             self.session.modified = True
 
     def get_total_price(self):

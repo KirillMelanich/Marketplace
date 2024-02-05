@@ -7,6 +7,10 @@ from django.urls import reverse
 
 
 def rand_slug():
+    """
+    Generate a random slug consisting of 3 characters from the set of lowercase
+    letters and digits.
+    """
     return "".join(
         random.choice(string.ascii_lowercase + string.digits) for _ in range(3)
     )
