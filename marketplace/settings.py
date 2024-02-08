@@ -29,11 +29,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     # 3rd party libs
     "mathfilters",
     "crispy_forms",
     "crispy_bootstrap5",
     "django_email_verification",
+    "django_google_fonts",
+
     # apps
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig",
@@ -56,7 +59,7 @@ ROOT_URLCONF = "marketplace.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "marketplace" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -120,6 +123,9 @@ USE_TZ = True
 # Static files
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
+STATICFILES_DIRS = [
+    BASE_DIR / "marketplace" / "static",
+]
 # Media files
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -177,3 +183,6 @@ EMAIL_USE_TLS = True
 STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
 STRIPE_API_VERSION = env("STRIPE_API_VERSION")
+
+GOOGLE_FONTS = ["Montserrat:wght@300;400;500", "Roboto:wght@300;400;500"]
+GOOGLE_FONTS_DIR = BASE_DIR / "static"

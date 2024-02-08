@@ -77,7 +77,7 @@ def complete_order(request):
         )
 
         match payment_type:
-            case "stripe-payment":
+            case "stripe-payment":            # if needed, you can add any another payment type
 
                 session_data = {
                     "mode": "payment",

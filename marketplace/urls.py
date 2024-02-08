@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django_email_verification import urls as email_urls
+from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -11,6 +12,7 @@ urlpatterns = [
     path("account/", include("account.urls", namespace="account")),
     path("email/", include(email_urls), name="email-verification"),
     path("payment/", include("payment.urls", namespace="payment")),
+    path("", views.index, name="index"),
 ]
 
 if settings.DEBUG:
