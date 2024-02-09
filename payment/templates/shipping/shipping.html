@@ -1,4 +1,4 @@
-{%  include "base.html" %}
+{% include "base.html" %}
 
 {% load static %}
 
@@ -6,44 +6,44 @@
 
 {% block content %}
 
-<div class="container bg-white shadow-md p-5 form-layout">
+  <div class="container bg-white shadow-md p-5 form-layout">
 
     <h3>Shipping</h3>
 
     <br>
 
     <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-secondary w-100 btn-block p-2 btn-register">Save</button>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-secondary w-100 btn-block p-2 btn-register">Save</button>
     </form>
 
     <br>
 
     {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-            {% for field in form %}
-                {% if field.errors %}
-                    {{ field.errors }}
-                {% endif %}
-            {% endfor %}
-        </div>
+      <div class="alert alert-danger" role="alert">
+        {% for field in form %}
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+        {% endfor %}
+      </div>
     {% endif %}
 
     {% if messages %}
-    <ul class="messages">
+      <ul class="messages">
         {% for message in messages %}
-            <li class="{{ message.tags }}">
-                {{ message|safe }}
+          <li class="{{ message.tags }}">
+            {{ message|safe }}
 
-            </li>
+          </li>
         {% endfor %}
-    </ul>
-{% endif %}
+      </ul>
+    {% endif %}
 
 
-</div>
+  </div>
 
-<br>
+  <br>
 
 {% endblock content %}

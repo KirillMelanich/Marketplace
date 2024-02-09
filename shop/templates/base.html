@@ -3,39 +3,39 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
+<head>
+  <meta charset="utf-8"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <!-- Head imports -->
-    {% include 'shop/_partials/_head_imports.html' %}
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <!-- Head imports -->
+  {% include 'shop/_partials/_head_imports.html' %}
 
-        <!-- Title -->
-    <title>{% block title %} Home {% endblock %}</title>
+  <!-- Title -->
+  <title>{% block title %} Home {% endblock %}</title>
 
-        <!--Custom CSS -->
-    <link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/montserrat:wght@300,400,500.css' %}"/>
+  <!--Custom CSS -->
+  <link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/montserrat:wght@300,400,500.css' %}"/>
 
-      <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{% static 'shop/images/favico.png' %}" >
-    {% block head %} {% endblock head %}
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="{% static 'shop/images/favico.png' %}">
+  {% block head %} {% endblock head %}
 
-  </head>
+</head>
 
-  <body>
-    <!-- Navbar -->
-    {% include 'shop/_partials/_navbar.html' %}
+<body>
+<!-- Navbar -->
+{% include 'shop/_partials/_navbar.html' %}
 
-    <main>
-      <!-- Content -->
-      {% block content %} {% endblock %}
-    </main>
-    <!-- Footer -->
-    {% include 'shop/_partials/_footer.html' %}
-  </body>
+<main>
+  <!-- Content -->
+  {% block content %} {% endblock %}
+</main>
+<!-- Footer -->
+{% include 'shop/_partials/_footer.html' %}
+</body>
 
-  <!-- Script -->
-  <script src="{% static 'shop/js/base.js' %}" ></script>
-  </body>
+<!-- Script -->
+<script src="{% static 'shop/js/base.js' %}"></script>
+</body>
 </html>

@@ -6,130 +6,133 @@
 
 {% block content %}
 
-<style>
+  <style>
 
-    body
-    {
+      body {
 
-        background-color: gray;
+          background-color: gray;
 
-    }
-
-
-</style>
+      }
 
 
-    <body>
+  </style>
+
+
+  <body>
+
+  <br>
+
+  <div class="container bg-white shadow-md p-5" style="width:500px; border-radius:20px;">
+
+    <form id="form" action="{% url 'payment:complete-order' %}" method="post">
+
+      <div>
+
+        <h3><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Complete your order </h3>
+
+        <p> Please enter in the relevant information below. </p>
+
+
+        <hr>
 
         <br>
 
-        <div class="container bg-white shadow-md p-5" style="width:500px; border-radius:20px;">
+        <div class="form-field">
 
-            <form id="form" action = "{% url 'payment:complete-order' %}" method="post">
-
-                <div>
-
-                    <h3> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Complete your order </h3>
-
-                    <p> Please enter in the relevant information below. </p>
-
-
-
-                    <hr>
-
-                    <br>
-
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="name" type="text" placeholder="Full name*" autocomplete="on" value="{{shipping_address.full_name}}" required>
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="email" type="email" placeholder="Email address*" autocomplete="on" value="{{shipping_address.email}}" required>
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="address1" type="text" placeholder="Street address*" autocomplete="on" value="{{shipping_address.street_address}}" required>
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="address2" type="text" placeholder="Apartment address" autocomplete="on" value="{{shipping_address.apartment_address}}" required>
-
-                    </div>
-
-
-                    <br>
-
-
-                     <div class="form-field">
-
-                        <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="on" value="{{shipping_address.city}}" required>
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control" id="state" type="text" placeholder="Country*" autocomplete="on" value="{{shipping_address.country}}">
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="on" value="{{shipping_address.zip_code}}">
-
-                    </div>
-
-                </div>
-
-                <br>
-
-                  {% csrf_token %}
-               <button id="complete-order-stripe" type="submit" class="btn btn-primary navbar-btn text-white" name="stripe-payment" value="stripe-payment"> &nbsp; Pay with Stripe </button>
-
-
-
-                <br>
-
-
-
-
-            </form>
-
+          <input class="form-control validate" id="name" type="text" placeholder="Full name*" autocomplete="on"
+                 value="{{ shipping_address.full_name }}" required>
 
         </div>
 
 
+        <br>
+
+
+        <div class="form-field">
+
+          <input class="form-control validate" id="email" type="email" placeholder="Email address*" autocomplete="on"
+                 value="{{ shipping_address.email }}" required>
+
+        </div>
+
 
         <br>
 
 
-    </body>
+        <div class="form-field">
+
+          <input class="form-control validate" id="address1" type="text" placeholder="Street address*" autocomplete="on"
+                 value="{{ shipping_address.street_address }}" required>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="form-field">
+
+          <input class="form-control validate" id="address2" type="text" placeholder="Apartment address"
+                 autocomplete="on" value="{{ shipping_address.apartment_address }}" required>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="form-field">
+
+          <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="on"
+                 value="{{ shipping_address.city }}" required>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="form-field">
+
+          <input class="form-control" id="state" type="text" placeholder="Country*" autocomplete="on"
+                 value="{{ shipping_address.country }}">
+
+        </div>
+
+
+        <br>
+
+
+        <div class="form-field">
+
+          <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="on"
+                 value="{{ shipping_address.zip_code }}">
+
+        </div>
+
+      </div>
+
+      <br>
+
+      {% csrf_token %}
+      <button id="complete-order-stripe" type="submit" class="btn btn-primary navbar-btn text-white"
+              name="stripe-payment" value="stripe-payment"> &nbsp; Pay with Stripe
+      </button>
+
+
+      <br>
+
+
+    </form>
+
+
+  </div>
+
+
+  <br>
+
+
+  </body>
 
 
 

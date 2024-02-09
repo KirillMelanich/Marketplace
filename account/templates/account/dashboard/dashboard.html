@@ -1,4 +1,4 @@
-{%  extends "base.html" %}
+{% extends "base.html" %}
 
 {% load static %}
 
@@ -6,31 +6,31 @@
 
 {% block content %}
 
-    <br>
-    <div class="container bg-white shadow-md p-3">
-        <h4>Welcome, {{ user.username }}!</h4>
+  <br>
+  <div class="container bg-white shadow-md p-3">
+    <h4>Welcome, {{ user.username }}!</h4>
 
-        <hr>
+    <hr>
 
-        <h6>Personal information</h6>
+    <h6>Personal information</h6>
 
-        <a href="{% url 'account:logout' %}">
-        <button class="btn btn-primary">
-            Logout
-            </button>
-        </a>
+    <a href="{% url 'account:logout' %}">
+      <button class="btn btn-primary">
+        Logout
+      </button>
+    </a>
 
-        <a href="{% url 'account:profile-management' %}">
-            <button class="btn btn-success">
-                Profile-management
-                </button>
-            </a>
+    <a href="{% url 'account:profile-management' %}">
+      <button class="btn btn-success">
+        Profile-management
+      </button>
+    </a>
 
-            <a href="{% url 'account:delete-user' %}">
-                <button class="btn btn-warning">
-                    Delete Account
-                    </button>
-                </a>
+    <a href="{% url 'account:delete-user' %}">
+      <button class="btn btn-warning">
+        Delete Account
+      </button>
+    </a>
 
-    </div>
+  </div>
 {% endblock %}

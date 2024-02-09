@@ -6,8 +6,9 @@ body {
     height: 100vh;
     background-color: #000000;
     transition: background-color 0.5s ease-in-out;
-  }
-  .welcome {
+}
+
+.welcome {
     position: absolute;
     color: #ffffff;
     top: 150px;
@@ -16,9 +17,9 @@ body {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-  }
+}
 
-  .box {
+.box {
     display: flex;
     border-radius: 5px;
     transition: transform 0.5s ease;
@@ -33,24 +34,25 @@ body {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-  }
-  a {
+}
+
+a {
     text-decoration: none;
     color: #000000;
-  }
+}
 
-  .box:hover {
+.box:hover {
     background-color: #f0f0f0;
-  }
+}
 
-  .box.box1:hover {
+.box.box1:hover {
     background-color: #45EDAD;
-  }
+}
 
-  .box.box2:hover {
+.box.box2:hover {
     background-color: #dcdcdc;
-  }
+}
 
-  .box.box3:hover {
+.box.box3:hover {
     background-color: #5e81ac;
-  }
+}

@@ -6,11 +6,11 @@
 {% load crispy_forms_tags %}
 
 <style>
-    body{
+    body {
         background-color: gray;
     }
 
-    .btn-register{
+    .btn-register {
         transition: 0.5s;
     }
 
@@ -22,16 +22,16 @@
 
 {% block content %}
 
+  <br>
+  <div class="container bg-white shadow-md p-5 form-layout">
+
+    <h3>Create new Account</h3>
     <br>
-    <div class="container bg-white shadow-md p-5 form-layout">
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" value="Register" class="btn btn-secondary w-100 btn-block p-2 btn-register">
+    </form>
+  </div>
 
-        <h3>Create new Account</h3>
-        <br>
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit" value="Register" class="btn btn-secondary w-100 btn-block p-2 btn-register">
-        </form>
-    </div>
-
-{% endblock  %}
+{% endblock %}
