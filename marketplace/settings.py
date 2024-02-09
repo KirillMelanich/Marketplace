@@ -122,7 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 # Static files
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = [
     BASE_DIR / "marketplace" / "static",
@@ -185,5 +185,5 @@ STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
 STRIPE_API_VERSION = env("STRIPE_API_VERSION")
 
-GOOGLE_FONTS = ["Montserrat:wght@300;400;500", "Roboto:wght@300;400;500"]
+GOOGLE_FONTS = ["Montserrat:wght@300;400", "Roboto"]
 GOOGLE_FONTS_DIR = BASE_DIR / "static"
