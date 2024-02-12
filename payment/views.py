@@ -77,7 +77,7 @@ def complete_order(request):
         )
 
         match payment_type:
-            case "stripe-payment":            # if needed, you can add any another payment type
+            case "stripe-payment":  # if needed, you can add any another payment type
 
                 session_data = {
                     "mode": "payment",
@@ -118,8 +118,10 @@ def complete_order(request):
                             }
                         )
 
-                        session = stripe.checkout.Session.create(**session_data)
-                        return redirect(session.url, code=303)
+                    session_data["client_reference_id"] = order.id
+                    session = stripe.checkout.Session.create(**session_data)
+                    return redirect(session.url, code=303)
+
                 else:
                     order = Order.objects.create(
                         shipping_address=shipping_address, amount=total_price
@@ -132,6 +134,20 @@ def complete_order(request):
                             price=item["price"],
                             quantity=item["qty"],
                         )
+
+                        session_data["line_items"].append(
+                            {
+                                "price_data": {
+                                    "unit_amount": int(item["price"] * Decimal(100)),
+                                    "currency": "usd",
+                                    "product_data": {"name": item["product"]},
+                                },
+                                "quantity": item["qty"],
+                            }
+                        )
+                    session_data["client_reference_id"] = order.id
+                    session = stripe.checkout.Session.create(**session_data)
+                    return redirect(session.url, code=303)
 
 
 def payment_success(request):
