@@ -39,7 +39,7 @@
 
         <div class="form-field">
 
-          <input class="form-control validate" id="name" type="text" placeholder="Full name*" autocomplete="on"
+          <input class="form-control validate" id="name" type="text" placeholder="Full name*" autocomplete="off"
                  value="{{ shipping_address.full_name }}" required>
 
         </div>
@@ -50,7 +50,7 @@
 
         <div class="form-field">
 
-          <input class="form-control validate" id="email" type="email" placeholder="Email address*" autocomplete="on"
+          <input class="form-control validate" id="email" type="email" placeholder="Email address*" autocomplete="off"
                  value="{{ shipping_address.email }}" required>
 
         </div>
@@ -61,7 +61,7 @@
 
         <div class="form-field">
 
-          <input class="form-control validate" id="address1" type="text" placeholder="Street address*" autocomplete="on"
+          <input class="form-control validate" id="address1" type="text" placeholder="Street address*" autocomplete="off"
                  value="{{ shipping_address.street_address }}" required>
 
         </div>
@@ -73,7 +73,7 @@
         <div class="form-field">
 
           <input class="form-control validate" id="address2" type="text" placeholder="Apartment address"
-                 autocomplete="on" value="{{ shipping_address.apartment_address }}" required>
+                 autocomplete="off" value="{{ shipping_address.apartment_address }}" required>
 
         </div>
 
@@ -83,7 +83,7 @@
 
         <div class="form-field">
 
-          <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="on"
+          <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="off"
                  value="{{ shipping_address.city }}" required>
 
         </div>
@@ -94,7 +94,7 @@
 
         <div class="form-field">
 
-          <input class="form-control" id="state" type="text" placeholder="Country*" autocomplete="on"
+          <input class="form-control" id="state" type="text" placeholder="Country*" autocomplete="off"
                  value="{{ shipping_address.country }}">
 
         </div>
@@ -105,7 +105,7 @@
 
         <div class="form-field">
 
-          <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="on"
+          <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="off"
                  value="{{ shipping_address.zip_code }}">
 
         </div>
