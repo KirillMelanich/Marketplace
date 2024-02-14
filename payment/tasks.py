@@ -14,8 +14,10 @@ def send_order_confirmation(order_id):
     message = f"Your order {order_id} and payment has been confirmed. Thank you for your purchase!"
 
     mail_to_sender = send_mail(
-        subject, message=message, from_email=settings.EMAIL_HOST_USER, recipient_list=[recipient_email]
+        subject,
+        message=message,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[recipient_email],
     )
 
     return mail_to_sender
-
