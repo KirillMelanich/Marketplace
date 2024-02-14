@@ -86,7 +86,7 @@ def order_pdf(obj):
 order_pdf.short_description = "Invoice"
 
 
-class ShippingAdressAdmin(admin.ModelAdmin):
+class ShippingAddressAdmin(admin.ModelAdmin):
     list_display = ("full_name_bold", "user", "email", "country", "city", "zip_code")
     empty_value_display = "-empty-"
     list_display_links = ("full_name_bold",)
@@ -132,4 +132,4 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem)
-admin.site.register(ShippingAddress, ShippingAdressAdmin)
+admin.site.register(ShippingAddress, ShippingAddressAdmin)

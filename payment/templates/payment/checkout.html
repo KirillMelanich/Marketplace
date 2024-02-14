@@ -61,8 +61,8 @@
 
         <div class="form-field">
 
-          <input class="form-control validate" id="address1" type="text" placeholder="Street address*" autocomplete="off"
-                 value="{{ shipping_address.street_address }}" required>
+          <input class="form-control validate" id="address1" type="text" placeholder="Street address*"
+                 autocomplete="off" value="{{ shipping_address.street_address }}" required>
 
         </div>
 
@@ -83,7 +83,7 @@
 
         <div class="form-field">
 
-          <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="off"
+          <input class="form-control validate" id="city" type="text" placeholder="City" autocomplete="off"
                  value="{{ shipping_address.city }}" required>
 
         </div>
@@ -94,8 +94,8 @@
 
         <div class="form-field">
 
-          <input class="form-control" id="state" type="text" placeholder="Country*" autocomplete="off"
-                 value="{{ shipping_address.country }}">
+          <input class="form-control validate" id="state" type="text" placeholder="Country" autocomplete="off"
+                 value="{{ shipping_address.country }}" required>
 
         </div>
 
@@ -106,20 +106,19 @@
         <div class="form-field">
 
           <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="off"
-                 value="{{ shipping_address.zip_code }}">
+                 value="{{ shipping_address.zip_code }}" required>
 
         </div>
 
       </div>
 
       <br>
-
       {% csrf_token %}
+
+
       <button id="complete-order-stripe" type="submit" class="btn btn-primary navbar-btn text-white"
               name="stripe-payment" value="stripe-payment"> &nbsp; Pay with Stripe
       </button>
-
-
       <br>
 
 
@@ -133,7 +132,5 @@
 
 
   </body>
-
-
 
 {% endblock %}
