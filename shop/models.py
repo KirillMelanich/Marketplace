@@ -62,7 +62,9 @@ class Category(models.Model):
             >>> rand_slug()
             'abc123'
         """
-        return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(3))
+        return "".join(
+            random.choice(string.ascii_lowercase + string.digits) for _ in range(3)
+        )
 
     def save(self, *args, **kwargs):
         """
@@ -70,7 +72,7 @@ class Category(models.Model):
         """
 
         if not self.slug:
-            self.slug = slugify(self._rand_slug() + '-pickBetter' + self.name)
+            self.slug = slugify(self._rand_slug() + "-pickBetter" + self.name)
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -94,12 +96,15 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=250, unique=True, null=False, editable=True)
     price = models.DecimalField("price", max_digits=12, decimal_places=2, default=99.99)
-    image = models.ImageField(upload_to="images/products/%Y/%m/%d", default="images/products/default.png")
+    image = models.ImageField(
+        upload_to="images/products/%Y/%m/%d", default="images/products/default.png"
+    )
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, auto_now=True)
     discount = models.IntegerField(
-        default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
 
     class Meta:
         verbose_name_plural = "Products"
@@ -127,7 +132,7 @@ class Product(models.Model):
         Returns:
             str: The full image URL.
         """
-        return self.image.url if self.image else ''
+        return self.image.url if self.image else ""
 
 
 class ProductManager(models.Manager):

@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import environ
-
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,7 +19,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,7 +28,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # 3rd party libs
     "mathfilters",
     "crispy_forms",
@@ -40,12 +38,12 @@ INSTALLED_APPS = [
     "django_celery_beat",
     "django_celery_results",
     "django_htmx",
-
     # apps
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig",
     "account.apps.AccountConfig",
     "payment.apps.PaymentConfig",
+    "recommend.apps.RecommendConfig",
 ]
 
 MIDDLEWARE = [
@@ -82,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "marketplace.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -113,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -121,7 +117,6 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Europe/Kiev"
 USE_I18N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -134,6 +129,14 @@ STATICFILES_DIRS = [
 # Media files
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+MESSAGE_TAGS = {
+    messages.DEBUG: "alert-secondary",
+    messages.INFO: "alert-info",
+    messages.SUCCESS: "alert-success",
+    messages.WARNING: "alert-warning",
+    messages.ERROR: "alert-danger",
+}
 
 # Crispy Forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -190,10 +193,8 @@ STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
 STRIPE_API_VERSION = env("STRIPE_API_VERSION")
 STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET")
 
-
 GOOGLE_FONTS = ["Montserrat:wght@300;400", "Roboto"]
 GOOGLE_FONTS_DIR = BASE_DIR / "static"
-
 
 # Celery
 CELERY_BROKER_URL = "redis://localhost:6379"

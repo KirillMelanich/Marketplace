@@ -12,6 +12,7 @@ urlpatterns = [
     path("account/", include("account.urls", namespace="account")),
     path("email/", include(email_urls), name="email-verification"),
     path("payment/", include("payment.urls", namespace="payment")),
+    path("recommend/", include("recommend.urls", namespace="recommend")),
     path("", views.index, name="index"),
 ]
 

@@ -50,6 +50,9 @@ class UserUpdateForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data["email"].lower()
-        if User.objects.filter(email=email).exclude(id=self.instance.id).exists() or len(email) > 254:
+        if (
+            User.objects.filter(email=email).exclude(id=self.instance.id).exists()
+            or len(email) > 254
+        ):
             raise forms.ValidationError("Email already in use ot too long")
         return email
