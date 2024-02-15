@@ -94,7 +94,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=250, unique=True, null=False, editable=True)
     price = models.DecimalField("price", max_digits=12, decimal_places=2, default=99.99)
-    image = models.ImageField(upload_to="products/products/%Y/%m/%d")
+    image = models.ImageField(upload_to="images/products/%Y/%m/%d", default="images/products/default.png")
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, auto_now=True)
