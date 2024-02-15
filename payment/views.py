@@ -162,14 +162,15 @@ def payment_failed(request):
 @staff_member_required
 def admin_order_pdf(request, order_id):
     try:
-        order = Order.objects.select_related('user', 'shipping_address').get(id=order_id)
+        order = Order.objects.select_related("user", "shipping_address").get(
+            id=order_id
+        )
     except Order.DoesNotExist:
-        raise Http404('Order was not found')
-    html = render_to_string('payment/order/pdf/pdf_invoice.html',
-                            {'order': order})
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
-    css_path = static('payment/css/pdf.css').lstrip('/')
+        raise Http404("Order was not found")
+    html = render_to_string("payment/order/pdf/pdf_invoice.html", {"order": order})
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = f"filename=order_{order.id}.pdf"
+    css_path = static("payment/css/pdf.css").lstrip("/")
     # css_path = 'static/payment/css/pdf.css'
     stylesheets = [weasyprint.CSS(css_path)]
     weasyprint.HTML(string=html).write_pdf(response, stylesheets=stylesheets)

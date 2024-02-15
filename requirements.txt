@@ -27,6 +27,7 @@ django-google-fonts==0.0.3
 django-mathfilters==1.0.0
 django-timezone-field==6.1.0
 exceptiongroup==1.2.0
+Faker==23.2.0
 flower==2.0.1
 fonttools==4.48.1
 html5lib==1.1
