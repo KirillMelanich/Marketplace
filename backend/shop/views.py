@@ -5,9 +5,6 @@ from django.views.generic import ListView
 from .models import Category, ProductProxy
 
 
-# def products_view(request):
-#     products = ProductProxy.objects.all()
-#     return render(request, 'shop/products.html', {'products': products})
 class ProductListView(ListView):
     model = ProductProxy
     context_object_name = "products"

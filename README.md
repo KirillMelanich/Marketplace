@@ -39,7 +39,7 @@ The "Marketplace" is a fully-fledged online store built on Django. Users can bro
    sudo docker-compose build
 4. Run the project:
    ```shell
-   sudo docker-compose build
+   sudo docker-compose up
 5. After running project create superuser:
    ```shell
    sudo docker exec -it marketplace-backend python manage.py createsuperuser

@@ -15,7 +15,7 @@ click-repl==0.3.0
 colorama==0.4.6
 crispy-bootstrap5==2023.10
 cron-descriptor==1.4.3
-cryptography==42.0.3
+cryptography==42.0.4
 cssselect2==0.7.0
 defusedxml==0.7.1
 deprecation==2.1.0
