@@ -37,7 +37,7 @@ drf-yasg==1.21.7
 exceptiongroup==1.2.0
 Faker==23.2.0
 flower==2.0.1
-fonttools==4.48.1
+fonttools==4.49.0
 html5lib==1.1
 humanize==4.9.0
 idna==3.6
