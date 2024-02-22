@@ -35,7 +35,7 @@ djangorestframework-simplejwt==5.3.1
 djoser==2.2.2
 drf-yasg==1.21.7
 exceptiongroup==1.2.0
-Faker==23.2.0
+Faker==23.2.1
 flower==2.0.1
 fonttools==4.49.0
 html5lib==1.1
